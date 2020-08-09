@@ -1,0 +1,44 @@
+buildscript {
+	dependencies { 
+		classpath "onight.osgi:zpp-gradle_1.8:3.4.0"
+		classpath ("org.brewchain:org.brewchain.bcscanorcl:3.0.0")
+ 	}
+}
+repositories{
+	maven{ url "http://dl.bintray.com/ethereum/maven/"}
+}
+
+project.group='org.brewchain'
+
+version = '3.0.0'
+
+apply plugin:'zippo'
+
+ext {
+    slf4jVersion = '1.7.7'
+    leveldbVersion = '0.7'
+    scastleVersion = '1.53.0.0'
+    springVersion = '4.2.0.RELEASE'
+    hibernateVersion = '4.3.7.Final'
+    junitVersion = '4.11'
+}
+
+dependencies {
+	compile ("org.fc.zippo:org.fc.zippo.oapi:4.0.2")
+	compile ("org.brewchain.core:org.brewchain.core.crypto:3.0.0")
+    compile ("org.brewchain.core:org.brewchain.core.cryptoapi:3.0.0")
+	compile ("org.brewchain:org.brewchain.bcscanapi:3.0.0")
+	compile ("org.brewchain:org.brewchain.core:3.0.0")
+    compile ("org.brewchain:org.brewchain.tools:3.0.0")
+	compile ("org.brewchain:org.brewchain.bcscanorcl:3.0.0")
+	compile "org.fc.zippo:org.fc.zippo.ordbutils:3.3.0-mysql"
+}
+
+jar {
+	manifest{
+		attributes( 'Import-Ignore':'com.cedarsoftware,org.bouncycastle,com.google')
+	}
+}
+
+
+ 	
